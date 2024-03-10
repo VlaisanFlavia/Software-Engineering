@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="card">
+        <h3 class="card-header">ÎNREGISTRARE</h3>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="mb-3 columns">
+                    <div>
+                        <input id="pacient" type="radio" class="btn-check" value="ROLE_PATIENT" name="role" formControlName="role" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }">
+                        <label class="btn btn-secondary" for="pacient">Pacient</label>
+                    </div>
+                    <div>
+                        <input id="doctor" type="radio" class="btn-check" value="ROLE_DOCTOR" name="role" formControlName="role" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }">
+                        <label class="btn btn-secondary" for="doctor">Doctor</label>
+                    </div>
+                    <div>
+                        <input id="asistenta" type="radio" class="btn-check" value="ROLE_NURSE" name="role" formControlName="role" [ngClass]="{ 'is-invalid': submitted && f['role'].errors }">
+                        <label class="btn btn-secondary" for="asistenta">Asistent</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nume</label>
+                    <input type="text" placeholder="Nume" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }" />
+                    <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['firstName'].errors['required']">Introduceți numele</div>
+                        <div *ngIf="f['firstName'].errors['minlength']">Numele trebuie să aibă cel puțin 2 litere</div>
+                        <div *ngIf="f['firstName'].errors['maxlength']">Numele trebuie să aibă cel mult 50 litere</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Prenume</label>
+                    <input type="text" placeholder="Prenume" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }" />
+                    <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['lastName'].errors['required']">Introduceți prenumele</div>
+                        <div *ngIf="f['lastName'].errors['minlength']">Prenumele trebuie să aibă cel puțin 2 litere</div>
+                        <div *ngIf="f['lastName'].errors['maxlength']">Prenumele trebuie să aibă cel mult 50 litere</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Adresa de e-mail</label>
+                    <input type="email" placeholder="Adresa de e-mail" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+                    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                        <div *ngIf="f['email'].errors['required']">Introduceți e-mailul</div>
+                        <div *ngIf="f['email'].errors['email']">Introduceți e-mailul</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">CNP</label>
+                    <input type="text" placeholder="Cod Numeric Personal (C.N.P.)" formControlName="cnp" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['cnp'].errors }" />
+                    <div *ngIf="submitted && f['cnp'].errors" class="invalid-feedback">
+                        <div *ngIf="f['cnp'].errors['required']">Introduceți CNP-ul</div>
+                        <div *ngIf="f['cnp'].errors['minlength']">CNP-ul trebuie să conțină 13 caractere</div>
+                        <div *ngIf="f['cnp'].errors['maxlength']">CNP-ul trebuie să conțină 13 caractere</div>
+                        <div *ngIf="f['cnp'].errors['pattern']">CNP-ul contine doar cifre</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Data nasterii</label>
+                    <input type="date" placeholder="Data nasterii" formControlName="birthDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['birthDate'].errors }" />
+                    <div *ngIf="submitted && f['birthDate'].errors" class="invalid-feedback">
+                        <div *ngIf="f['birthDate'].errors['required']">Introduceți data nașterii</div>
+                        <div *ngIf="f['birthDate'].errors['dateNotInFuture']">Data nașterii nu poate fi în viitor</div>
+                        <div *ngIf="f['birthDate'].errors['minimumAge']">
+                            Trebuie sa ai {{ f['birthDate'].errors['minimumAge'].requiredAge }} ani pentru a te inregistra.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3" *ngIf="f['role'].value==='ROLE_DOCTOR'">
+                    <label class="form-label">Specializare</label>
+                    <input type="text" placeholder="Specializarea" formControlName="speciality" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['speciality'].errors }"/>
+                    <div *ngIf="submitted && f['speciality'].errors" class="invalid-feedback">
+                        <div *ngIf="f['speciality'].errors['required']">Introduceți specializarea</div>
+                    </div>
+                </div>
+                <div class="mb-3" *ngIf="f['role'].value==='ROLE_DOCTOR'">
+                    <label class="form-label">Cabinet</label>
+                    <input type="text" placeholder="Cabinet" formControlName="medicalOfficeName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['medicalOfficeName'].errors }" />
+                    <div *ngIf="submitted && f['medicalOfficeName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['medicalOfficeName'].errors['required']">Introduceți cabinetul</div>
+                    </div>
+                </div>
+                <div class="mb-3" *ngIf="f['role'].value==='ROLE_DOCTOR'">
+                    <label class="form-label">Adresa cabinetului</label>
+                    <input type="text" placeholder="Adresa cabinetului" formControlName="medicalOfficeAddress" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['medicalOfficeAddress'].errors }" />
+                    <div *ngIf="submitted && f['medicalOfficeAddress'].errors" class="invalid-feedback">
+                        <div *ngIf="f['medicalOfficeAddress'].errors['required']">Introduceți adresa cabinetului dumneavoastră</div>
+                    </div>
+                </div>
+                <div class="mb-3" *ngIf="f['role'].value==='ROLE_NURSE'">
+                    <label class="form-label">Cabinet</label>
+                    <select class="form-control" name="cabinet" (change)="changeCabinet($event)" formControlName="medicalOfficeName" [ngClass]="{ 'is-invalid': submitted && f['medicalOfficeName'].errors }">
+                        <option *ngFor="let cabinet of cabinete" [ngValue]="cabinet">
+                            {{ cabinet }}
+                        </option>
+                    </select>
+                    <div *ngIf="submitted && f['medicalOfficeName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['medicalOfficeName'].errors['required']">Introduceți cabinetul</div>
+                    </div>
+
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Parola</label>
+                    <input type="password" placeholder="Introduceti parola" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors}">
+                    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                        <div *ngIf="f['password'].errors['required']">Introduceți parola</div>
+                        <div *ngIf="f['password'].errors['minlength']">Parola trebuie să conțină cel puțin 8 caractere</div>
+                        <div *ngIf="f['password'].errors['pattern']">Parola trebuie să conțină litere mici și mari, cel puțin o cifră și un caracter special.</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Confirmă parola</label>
+                    <input type="password" placeholder="Confirmati parola" class="form-control" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors}">
+                    <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+                        <div *ngIf="f['confirmPassword'].errors['required']">Introduceți parola</div>
+                        <div *ngIf="f['confirmPassword'].errors['minlength']">Parola trebuie să conțină cel puțin 8 caractere</div>
+                        <div *ngIf="f['confirmPassword'].errors['confirmedValidator']">Nu se potriveste parola cu confirmarea</div>
+                    </div>
+                </div>
+                <div class="mb-1 text-center">
+                    <button [disabled]="loading" type="submit" class="btn btn-primary text-center">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                        Inregistreaza-te
+                    </button>
+                </div>
+                <div class="mb-1 text-center">
+                    <a routerLink="../login" class="btn btn-link">Ai deja cont? Logheaza-te</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

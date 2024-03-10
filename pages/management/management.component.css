@@ -1,0 +1,34 @@
+.container-fluid{
+    height: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.row{
+    align-items: center;
+}
+
+.col{
+    align-items: center;
+}
+
+.btn-outline{
+    color: #6096B4;
+    border-color: #6096B4;
+    font-weight: 600;
+    font-size:5vh;
+    border-radius: 1;
+    border-width: thick;
+}
+
+.btn-outline:hover{
+    background-color: #EEE9DA;
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  	transform: translateY(-0.25em);
+}
+
+
+
+
+
+

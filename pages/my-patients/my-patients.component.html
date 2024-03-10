@@ -1,0 +1,57 @@
+<div class="container">
+
+    <div class="row">
+
+
+        <div class="col-sm-4 order-sm-1 d-flex flex-column">
+            <div class="form-group mt-auto">
+                <input type="text" class="form-control" placeholder="Search" name="search">
+            </div>
+        </div>
+
+        <div class="col-sm-4 order-sm-3 d-flex  justify-content-center justify-content-lg-end justify-content-md-end">
+            <div class="arrow-container mt-auto">
+                <button class="prev-arrow" (click)="onArrowClick()"><i class="fas fa-arrow-left"></i></button>
+                <button class="next-arrow" (click)="onArrowClick()"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <div class="col-sm-4 order-sm-2 d-flex justify-content-center">
+           
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="MyPatientsTable" class="table" summary="patients">
+                    <thead class="custom-header-box">
+                        <tr class="custom-tr1">
+                            <th class="custom-th1"></th>
+                            <th class="custom-th"><span>NUME</span></th>
+                            <th class="custom-th"><span>PRENUME</span></th>
+                            <th class="custom-th"></th>
+                            <th class="custom-th2"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        
+                        <tr class="custom-tr" *ngFor="let myPatientsRow of myPatientsRows" >
+                            <td class="custom-td"></td>
+                            <td class="custom-td">{{myPatientsRow.lastName}}</td>
+                            <td class="custom-td">{{myPatientsRow.firstName}}</td>
+                            <button id="ist_test" type="button" class="custom-td"  style=" border:none;" (click)="onIstoricClick(myPatientsRow.id)"><b style="color:#6096B4">ISTORIC</b></button>
+                            <td class="custom-td"></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>

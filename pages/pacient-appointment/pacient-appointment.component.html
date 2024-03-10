@@ -1,0 +1,39 @@
+<div class="container-fluid, col-xs-3 col-md-6 col-xs-3">
+    <h3 class="text-center">Programare consultație medicală</h3>
+    <form class = "col-md-6 position-absolute start-50 top-50 translate-middle" [formGroup]="reactiveForm" (ngSubmit)="onSubmit($event)" ngNativeValidate>
+        <!-- <h4 class="text-center">Pretul unei programari este de {{getAppointmentPrice()}}</h4>   -->
+
+        <div class="form-group">
+            <label for="date">Selectați data:</label>
+            <input type="date" class="form-control my-input" formControlName="date" id="date" name="date" min="2023-05-01" required>
+            <div class="form-group" *ngIf="reactiveForm.get('date').errors?.['noWeekends']">
+                <p class="alert-danger">Selectarea unei date de weekend nu este permisă.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="time">Selectati ora:</label>
+            <select class="form-control my-input" formControlName="time" id="time" name="time" [attr.disabled]="reactiveForm.controls['date'].errors?.['noWeekends']" required>
+                <option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
+                <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
+                <option value="01:00 PM - 2:00 PM">01:00 PM - 2:00 PM</option>
+                <option value="02:00 PM - 3:00 PM">02:00 PM - 3:00 PM</option>
+                <option value="03:00 PM - 4:00 PM">03:00 PM - 4:00 PM</option>
+                <option value="04:00 PM - 5:00 PM">04:00 PM - 5:00 PM</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="time">Selectati cabinetul:</label>
+            <select class="form-control my-input" formControlName="cabinet" id="cabinet" name="cabinet" required>
+                <option value="" hidden></option>
+                <option *ngFor="let medicalOfficeOption of medicalOfficesOptions" [ngValue]="medicalOfficeOption">{{medicalOfficeOption.name}} - pret: {{medicalOfficeOption.appointmentPrice}} lei</option>
+            </select>
+            <div class="buttons d-flex justify-content-center">
+                <button id="plata_cash" (click)="onPlataCashClick" type="submit" class="btn btn-primary">Plata cash</button>
+                <button id = "plata_card" (click)="onPlataCardClick" type="submit" class="btn btn-primary">Plata card</button>
+            </div>
+        </div>
+
+    </form>
+</div>

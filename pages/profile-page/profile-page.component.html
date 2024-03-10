@@ -1,0 +1,63 @@
+<div class="container">
+    <form class="form mx-auto mb-4" [formGroup]="uploadForm">
+        <div class="row">
+            <div class="offset-md-9 col-md-3">
+                <div class="image-container translate">
+                    <img [src]="profilePageInfo.imageUrl" [alt]="uploadForm.value.formArrayName">
+                    <input style="display: none;" type="file" accept="image/*" (change)="onSelectFile($event)" #fileInput>
+                    <button class="ps" (click)="fileInput.click()">
+                      <i class="fas fa-plus" style="font-size: 140%; flex-wrap: wrap;"></i> Schimbă Poza
+                    </button>    
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <ul>
+                <div class="col-md-12 ">
+                    <div class="row">
+                        <p class="bold-italic w-100 ml-4" style="overflow-x: auto;">{{profilePageInfo?.firstName}} {{profilePageInfo?.lastName}}</p>
+                        <p style="overflow-x: auto; color:#333;">{{profilePageInfo?.email}}</p>
+                    </div>
+                </div>
+                
+                <!-- <div class="row">
+                  <div class="col-md-12">
+                      
+                    <ng-container *ngIf="editMode">
+                      <input type="text" class="form-control" 
+                        placeholder="" />
+                    </ng-container>
+                    <p *ngIf="!editMode" style="overflow-x: auto; color: #333;">
+                      {{ uploadForm.controls['price'].value || 'Setează prețul pentru cabinetul tău' }}
+                      <span class="edit-icon" *ngIf="!editMode" (click)="enableEditMode()">
+                        <i class="fas fa-pen"></i>
+                      </span>
+                    </p>
+                  </div>
+                </div> -->
+                <div class="row mt-3">
+                    <div class="col-md-12 buttons mt-3" style="padding: 0px;">
+                        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Actualizează Profilul</button>
+                    </div>
+                </div>
+            
+              </ul>
+        </div>
+      </form>
+  
+    <ng-template #croppingModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Modifică Poza</h4>
+      <button type="button" class="close" aria-label="Close" (click)="closeCroppingModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <image-cropper [imageBase64]="imageUrl" (imageCropped)="onImageCropped($event)"></image-cropper>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeCroppingModal()">Închide</button>
+      <button type="button" class="btn btn-primary" (click)="modalRef.close('crop')">Setează</button>
+    </div>
+  </ng-template>
+  </div>

@@ -1,0 +1,53 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-3">
+      <button id="add_btn" (click) = "addButton()" class="btn-add">
+        Adauga medicament
+      </button>
+    </div>
+    <div class="col-sm-8">
+
+    </div>
+    <div class="col-sm-1  d-flex  justify-content-center justify-content-lg-end justify-content-md-end">
+      <div class="arrow-container">
+        <button class="prev-arrow" (click)="onArrowClick()"><i class="fas fa-arrow-left"></i></button>
+        <button class="next-arrow" (click)="onArrowClick()"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table id="nursesTable" class="table" summary="nurses">
+          <thead class="custom-header-box">
+            <tr class="custom-tr1">
+              <th class="custom-th1"><span>DENUMIRE</span></th>
+              <th class="custom-th"><span>CANTITATE</span></th>
+              <th class="custom-th"><span>ACTUALIZARE</span></th>
+              <th class="custom-th2"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr class="custom-tr" *ngFor="let drugTableRow of drugTableRows">
+              <td class="custom-td">{{drugTableRow.medicine.name}}</td>
+              <td class="custom-td">{{drugTableRow.quantity}}</td>
+              <td class="custom-td"><button type="button" class="btn-actualizare" (click)="onClickSubtractRow(drugTableRow)">
+                SCADE
+              </button> </td>
+              <td class="custom-td"><button type="button" class="btn-actualizare" (click)="onClickDeleteItem(drugTableRow)">
+                STERGE
+              </button> </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

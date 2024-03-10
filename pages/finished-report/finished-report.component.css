@@ -1,0 +1,66 @@
+.form {
+    background-color: #BDCDD6;
+    padding: 20px;
+    width: 70%;
+}
+
+.info input {
+    border: 2px solid #BDCDD6;
+    background-color: #EEE9DA;
+    border-radius: 10px;
+    color: #404040;
+    font-size: 15px;
+
+}
+
+.info textarea {
+    border: 2px solid #BDCDD6;
+    background-color: #EEE9DA;
+    border-radius: 10px;
+    color: #404040;
+    font-size: 15px;
+
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttons button {
+    border: 2px solid #BDCDD6;
+    background-color: #EEE9DA;
+    border-radius: 50px;
+    color: #404040;
+    font-size: 17px;
+}
+
+.add-button {
+    padding: 18px;
+    border: 2px solid #BDCDD6;
+    background-color: #EEE9DA;
+    color: #404040;
+}
+.remove-button {
+    border: 1px solid #404040;
+    border-radius: 50px;
+    color: #404040;
+}
+
+.rounded-circle {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    display: flex
+}
+
+.table{
+    border-collapse: separate;
+    border-spacing: 5px 9px;
+}
+
+#medicineSelect {
+    background-color: #EEE9DA;
+}

@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+
+  <div class="row">
+
+
+    <div class="col-sm-4 order-sm-1 d-flex flex-column">
+    </div>
+
+    <div class="col-sm-4 order-sm-3 d-flex  justify-content-center justify-content-lg-end justify-content-md-end">
+      <div class="arrow-container mt-auto">
+        <button class="prev-arrow"><i class="fas fa-arrow-left"></i></button>
+        <button class="next-arrow"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <div class="col-sm-4 order-sm-2 ">
+    </div>
+
+  </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table id="nursesTable" class="table"  summary="nurses">
+            <thead class="custom-header-box">
+              <tr class="custom-tr1" >
+                <th class="custom-th1" scope="style"></th>
+                <th class="custom-th" scope="data"><span>DATA</span></th>
+                <th class="custom-th" scope="data"><span>NUME</span></th>
+                <th class="custom-th" scope="data"><span>PRENUME</span></th>
+                <th class="custom-th" scope="style"><span></span></th>
+                <th class="custom-th" scope="style"><span></span></th>
+                <td class="custom-td" scope="style"></td>
+                <th class="custom-th2" scope="style"></th>
+              </tr>
+            </thead>
+  
+            <tbody>
+  
+              <tr class="custom-tr" *ngFor="let appointment of appointments">
+                <td class="custom-td" scope="style"></td>
+                <td class="custom-td" scope="data">{{ 
+                  appointment.date | date:'dd/MM/yyyy'  
+                }}
+                </td>
+                <td class="custom-td" scope="data">{{appointment.patient.lastName}}</td>
+                <td class="custom-td" scope="data">{{appointment.patient.firstName}}</td>
+                <td><button id="id_button" type="button" class="button" style="vertical-align:middle" (click)="onCompleteClick(appointment.id)"><span>Finalizeaza</span></button></td>
+                <td><button class="button" style="vertical-align:middle" (click)="onClickDeleteAppointment(appointment)"><span>Anuleaza </span></button></td>
+                <td class="custom-td" scope="style"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+  </div>

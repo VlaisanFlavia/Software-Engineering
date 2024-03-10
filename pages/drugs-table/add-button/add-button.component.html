@@ -1,0 +1,37 @@
+<div class="modal-content">
+  <div class="modal-body">
+    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+
+      <h5 class="modal-title" id="exampleModalLabel">Adaugă un medicament</h5>
+      <div class="col-md-12">
+        <label for="denumire">Selectati denumire medicament:</label>
+        <select [(ngModel)]="selectedMedicine" class="form-control my-input" formControlName="denumire" id="denumire" name="denumire" required>
+          <option value="" hidden></option>
+          <option *ngFor="let medicineOption of medicinesOptions" [ngValue]="medicineOption">{{medicineOption.name}}</option>
+        </select>
+        <div *ngIf = "reactiveForm.controls['denumire'].errors && isSelectedName">
+          <div class="alert alert-danger" role="alert" *ngIf="this.reactiveForm.controls['denumire'].invalid">
+            Selectați un medicament!
+          </div>
+        </div>
+
+        <label for="cantitate">Introduceți cantitatea:</label>
+        <input [style.border]="this.reactiveForm.controls['cantitate'].valid ? '' : '2px solid red'" type="text" id="CantitateMedicament" class="form-control" formControlName="cantitate" placeholder="Cantitate">
+
+        <div class="medicine-price">Preț medicament:
+          <span class="medicine-price-value">{{getMedicinePrice()}}</span> lei
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+      Închide
+    </button>
+    <button type="button" class="btn btn-primary" (click)="onSubmit()">
+      Comandă
+    </button>
+  </div>
+</div>

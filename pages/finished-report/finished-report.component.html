@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="form mx-auto mt-4 mb-4">
+    <div class="row">
+      <div class="col-md-6 info">
+        <label for="pacient">Pacient</label>
+        <input
+          type="text"
+          class="form-control"
+          id="patientName"
+          value="{{ medicalReport?.appointment?.patient?.firstName }} {{
+            medicalReport.appointment?.patient?.lastName
+          }}"
+          readonly
+        />
+      </div>
+      <div class="col-md-6 info">
+        <label for="date">Dată</label>
+        <input
+          type="text"
+          class="form-control"
+          id="appointmentDate"
+          value="{{ medicalReport?.appointment?.date | date : 'mediumDate' }}"
+          readonly
+        />
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12 info">
+        <label for="observation">Observații medicale</label>
+        <textarea class="form-control" id="observation" rows="4" readonly>{{
+          medicalReport?.description
+        }}</textarea>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-12 info">
+        <label for="prescription">Rețetă</label>
+        <div class="table-responsive">
+          <table class="table">
+            <tr *ngFor="let prescription of medicalReport.recipe">
+              <td>
+                <input
+                  type="text"
+                  value="{{ prescription.medicine.name }}"
+                  class="form-control"
+                  readonly
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  value="{{ prescription.description }}"
+                  class="form-control"
+                  readonly
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-12 buttons mt-3">
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Vezi ca PDF</button>
+      </div>
+    </div>
+  </div>
+</div>

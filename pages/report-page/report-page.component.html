@@ -1,0 +1,67 @@
+<div class="container">
+    <form class="form mx-auto mt-4 mb-4" [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-6 info">
+                <label for="pacient" class="form-label">Pacient</label>
+                <input type="text" class="form-control" id="patientName" value="{{ appointment?.patient?.firstName }} {{appointment?.patient?.lastName}}" readonly>
+            </div>
+            <div class="col-md-6 info">
+                <label for="date" class="form-label">Dată</label>
+                <input type="text" class="form-control" id="appointmentDate" value="{{appointment?.date| date:'mediumDate'}}" readonly>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12 info">
+                <label for="observation" class="form-label">Observații medicale</label>
+                <textarea class="form-control" id="observation" formControlName="observation" rows="4"></textarea>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12 info">
+                <label for="prescription" class="form-label">Rețetă</label>
+                <div class="table-responsive">
+                    <table class="table" formArrayName="fields">
+                        <tr *ngFor="let field of fields().controls; let i=index" [formGroupName]="i"s>
+                            <td style="border-radius: 8px;" [style.border]="(isValidField(i)) ? '' : '2px solid red'">
+                                <select class="form-control" formControlName="medicine" id="medicineSelect" name="medicine">
+                                    <option value="" hidden>Alege medicament</option>
+                                    <option *ngFor="let medicine of medicineOptions" [ngValue]="medicine">
+                                        {{medicine.name}}
+                                    </option>
+                                </select>
+                                <!-- <input type="text" formControlName="medicine" placeholder="Medicament"
+                                    class="form-control"> -->
+                            </td>
+                            <td>
+                                <input type="text" formControlName="description" placeholder="Doză" class="form-control">
+                            </td>
+                            <td>
+                                <button (click)="removeField(i)" class="buttons remove-button rounded-circle">
+                                    <i class="fas fa-times position-relative d-flex justify-content-center"></i>
+                                </button>
+                            </td>
+                            
+                        </tr>
+
+                        <tr>
+                            <th>
+                                <button type="button" (click)="addField()" class="buttons add-button rounded-circle">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </th>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+            <div class="col-md-12 buttons mt-3">
+                <button type="submit" class="btn btn-primary">Finalizare</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- <br />
+         {{this.productForm.value | json}} -->
+</div>

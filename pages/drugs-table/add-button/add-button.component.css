@@ -1,0 +1,92 @@
+ .modal-title{
+  background-color: #8ca4b1; 
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-body {
+  /* margin-top: 70px; */
+
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+  background-color: #f3f3f3;
+  border-radius:  10px 10px 0 0;
+  padding: 15px;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25); */
+}
+
+/* .modal-container{
+  border-radius: 20px;
+} */
+
+
+
+.container {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  max-width: 450px;
+}
+
+
+.modal-body .col-md-12 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-body label {
+  font-weight: bold;
+}
+
+.modal-body select {
+  height: 38px;
+}
+
+.modal-body input {
+  height: 38px;
+  border-radius: 4px;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: 1px solid #ced4da;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+}
+
+.modal-body input:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+.medicine-price {
+  font-weight: bold;
+}
+
+.medicine-price-value {
+  margin-left: 0.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.75rem;
+  background-color: #f3f3f3;
+
+}
+
+.modal-footer button {
+  margin-left: 0.5rem;
+  background-color: #6096B4;
+}
+.modal-footer button.btn-secondary:hover {
+  background-color: #2F5E7E;
+}
+
+.modal-footer button.btn-primary:hover {
+  background-color: #2F5E7E;
+}
+

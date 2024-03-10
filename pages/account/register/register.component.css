@@ -1,0 +1,99 @@
+.card {
+    /*background-color: #d5d5d5;*/
+    max-width: 750px;
+    font-size: larger;
+    margin: 0 auto; /* center the card horizontally */
+    margin-top: 30px; /* add some space on top */
+    margin-bottom: 30px;
+    text-decoration: none;
+    background-color: #bdcdd6;
+  }
+  .btn-link{
+    text-decoration: none;
+    font-style: italic;
+    color:#6096b4;
+  
+  }
+  .btn-primary:active{
+    background-color: #40667a;
+  }
+  
+  [type='radio'] {
+    display: none;
+  }
+  
+  .btn-link:hover{
+    color:#40667a;
+  }
+  .btn-link:active{
+    color:#40667a;
+  }
+  .btn-primary{
+    min-width: 25%;
+    font-size: large;
+    background-color: #6096b4;
+  }
+  .card-header{
+    text-align: right;
+    font-size: larger;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'Didact Gothic', monospace;
+    color: #090847;
+  }
+  
+  .green {
+    background-color:#40667a;
+  }
+  
+  .red {
+    background-color: #6096b4;
+  }
+  .container{
+    font-family: 'Barlow', sans-serif;
+  }
+  .columns {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    padding-top: 2%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .btn-secondary{
+    width: 120px;
+    padding: 0.5em;
+    background-color: #6096b4;
+    font-size: large;
+  }
+  .data-nastere{
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .data-nastere p{
+    padding-left:6px;
+    padding-bottom: none;
+    font-size: medium;
+    color: gray
+  }
+  
+  @media (max-width: 45em) {
+    .columns {
+      display: flex;
+      justify-content: space-evenly;
+      gap: 10px;
+      padding-top: 2%;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    .btn-secondary{
+      width: 100%;
+      padding: 0.5em;
+      background-color: #6096b4;
+      font-size: large;
+    }
+  
+  }
