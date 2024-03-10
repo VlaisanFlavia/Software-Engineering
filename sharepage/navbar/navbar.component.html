@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-light">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 navbar-text h1">MY_DOC</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ng-container *ngIf="isUserLoggedIn()">
+          <!-- all loged users -->
+          <a class="nav-link" routerLink="home" routerLinkActive="active">ACASA</a>
+          <ng-container *ngIf="!isUserPatient()">
+            <!-- doctor and nurse  -->
+            <a class="nav-link" routerLink="my-patients" routerLinkActive="active">PACIENTI</a>
+            <a class="nav-link" routerLink="appointments" routerLinkActive="active">PROGRAMARI VIITOARE</a>
+          </ng-container>
+          <ng-container *ngIf="isUserPatient()">
+            <!-- patients -->
+            <a class="nav-link" routerLink="pacient-appointment" routerLinkActive="active">FA O PROGRAMARE</a>
+            <a class="nav-link" routerLink="history-appointments" routerLinkActive="active">ISTORICUL MEU</a>
+          </ng-container>
+          <ng-container *ngIf="isUserDoctor()">
+            <!-- only doctor -->
+            <a class="nav-link" routerLink="management" routerLinkActive="active">ADMINISTRARE</a>
+          </ng-container>
+          <ng-container *ngIf="isUserNurse()">
+            <!-- only nurse -->
+            <a class="nav-link" routerLink="drugs-table" routerLinkActive="active">MEDICAMENTE</a>
+          </ng-container>
+          <a class="nav-link" (click)="logout()" routerLink="login">LOGOUT</a>
+          <a class="nav-link" routerLink="profile-page" id="photo" role="button">
+            <img [src]="profileImage" class="rounded-circle border nav-image" alt="Avatar" />
+          </a>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,24 @@
+.navbar-light {
+    background-color: #6096B4;
+}
+
+.navbar-text{
+    color: #EEE9DA;
+}
+
+.nav-link, .nav-link.active{
+    color: #BDCDD6;
+}
+
+
+.nav-link.active{
+    font-weight: 500;
+    color: #EEE9DA ;
+}
+
+
+.nav-image {
+    object-fit: cover;
+    transform: scale(1.2);
+    height: 26px
+}
